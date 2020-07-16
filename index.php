@@ -10,16 +10,20 @@
     <link rel="stylesheet" href="dist/app.css">
   </head>
   <body>
+    <!-- Inizio header -->
     <header>
-      <div>
-        <img src="img/logo.png" alt="logo">
+      <div class="container">
+        <img class="logo" src="img/logo.png" alt="logo">
       </div>
     </header>
+    <!-- Fine header -->
+
+    <!-- Inizio main -->
     <main>
-      <div>
+      <div class="music_container">
         <?php foreach ($database as $disk) { ?>
         <div class="disk">
-          <img src=" <?php echo $disk['poster'] ?> " alt="cover">
+          <img class="cover" src=" <?php echo $disk['poster'] ?> " alt="cover">
           <h3> <?php echo $disk['title'] ?> </h3>
           <span> <?php echo $disk['author'] ?> </span>
           <span> <?php echo $disk['year'] ?> </span>
@@ -27,6 +31,6 @@
       <?php } ?>
       </div>
     </main>
-
+    <!-- Fine main -->
   </body>
 </html>
