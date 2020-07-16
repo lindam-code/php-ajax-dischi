@@ -20,6 +20,27 @@ main {
   background-color: $secondary_color;
   div {
     @include container;
-    padding: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    .disk {
+      width: 22%;
+      height: 350px;
+      background-color: $primary_color;
+      border: 1px solid black;
+      text-align: center;
+      margin: 25px;
+      padding: 25px;
+      img {
+        width: 100%;
+      }
+      h3 {
+        color: white;
+        text-transform: uppercase;
+      }
+      span {
+        display: block;
+        color: grey;
+      }
+    }
   }
 }

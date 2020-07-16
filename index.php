@@ -1,8 +1,5 @@
 <?php
   include 'database.php';
-  foreach ($database as $disk) {
-    var_dump($disk['title']);
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -19,9 +16,14 @@
     </header>
     <main>
       <div>
-
-
-      </div>
+        <?php foreach ($database as $disk) { ?>
+        <div class="disk">
+          <img src=" <?php echo $disk['poster'] ?> " alt="cover">
+          <h3> <?php echo $disk['title'] ?> </h3>
+          <span> <?php echo $disk['author'] ?> </span>
+          <span> <?php echo $disk['year'] ?> </span>
+        </div>
+      <?php } ?>
       </div>
     </main>
 

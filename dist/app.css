@@ -9,7 +9,7 @@ header {
   height: 70px;
 }
 header div {
-  max-width: 80%;
+  max-width: 70%;
   margin: auto;
 }
 header div img {
@@ -21,7 +21,28 @@ main {
   background-color: #1e2d3b;
 }
 main div {
-  max-width: 80%;
+  max-width: 70%;
   margin: auto;
-  padding: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+main div .disk {
+  width: 22%;
+  height: 350px;
+  background-color: #2e3a46;
+  border: 1px solid black;
+  text-align: center;
+  margin: 25px;
+  padding: 25px;
+}
+main div .disk img {
+  width: 100%;
+}
+main div .disk h3 {
+  color: white;
+  text-transform: uppercase;
+}
+main div .disk span {
+  display: block;
+  color: grey;
 }
