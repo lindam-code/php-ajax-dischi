@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: $primary_color;
+  height: 70px;
+  div {
+    @include container;
+    img {
+      width: 50px;
+      vertical-align: middle;
+    }
+  }
+}
+
+main {
+  background-color: $secondary_color;
+  div {
+    @include container;
+    padding: 100px;
+  }
+}
