@@ -3,8 +3,21 @@ header {
   width: 100%;
   height: 70px;
   position: fixed;
-  display: flex;
+  padding: 10px 0;
+  .container {
+    display: flex;
+    align-items: center;
+  }
   .logo {
     width: 50px;
+  }
+  label {
+    color: white;
+    font-size: 20px;
+  }
+  #author_select {
+    background-color: $primary_color;
+    color: white;
+    font-size: 20px;
   }
 }

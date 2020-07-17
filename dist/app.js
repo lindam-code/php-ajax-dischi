@@ -16092,6 +16092,7 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
 $(document).ready(function () {
+  // Chiamata Ajax per tutti i cd quando apro la pagina
   $.ajax({
     url: 'http://localhost:8888/php-ajax-dischi/server.php',
     method: 'GET',
@@ -16101,11 +16102,31 @@ $(document).ready(function () {
     error: function error() {
       alert('La chiamata api non risponde');
     }
-  });
+  }); // Chiamata Ajax per scelta dell'autore da parte dell'utente
+
+  $('#author_select').change(function () {
+    var userAuthor = $(this).val();
+    $.ajax({
+      url: 'http://localhost:8888/php-ajax-dischi/server.php',
+      method: 'GET',
+      data: {
+        author: userAuthor
+      },
+      success: function success(dataResponse) {
+        printCd(dataResponse);
+      },
+      error: function error() {
+        alert('La chiamata api non risponde');
+      }
+    });
+  }); // Stampo a schermo i cd
 
   function printCd(database) {
+    // Preparo template Handlebars
     var source = $('#cd-template').html();
-    var template = Handlebars.compile(source);
+    var template = Handlebars.compile(source); // Pulisco il container della musica
+
+    $('.music_container').text(''); // Stampo i cd che ho nel database
 
     for (var i = 0; i < database.length; i++) {
       var html = template(database[i]);
