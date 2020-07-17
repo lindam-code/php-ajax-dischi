@@ -1,60 +1,25 @@
-// RESET
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-// FINE RESET
-// GENERALI
-body {
-  font-family: 'Lato', sans-serif;
-  background-color: $secondary_color;
-}
-// FINE GENERALI
-// HEADER
-header {
-  background-color: $primary_color;
-  width: 100%;
-  height: 70px;
-  position: fixed;
-  display: flex;
-}
-.container {
-  width: 70%;
-  margin: auto;
-}
-.logo {
-  width: 50px;
-}
-// FINE HEADER
-// MAIN
 .music_container {
-  width: 70%;
-  margin: auto;
   display: flex;
   flex-wrap: wrap;
   padding-top: 70px;
-  justify-content: center;
-}
-.disk {
-  width: 22%;
-  height: 350px;
-  background-color: $primary_color;
-  border: 1px solid black;
-  text-align: center;
-  margin: 10px;
-  padding: 25px;
-}
-.disk .cover  {
-  width: 100%;
+  .disk {
+    flex-basis: calc(100%/3);
+    padding: 20px;
+    &-info {
+      padding: 15px;
+      height: 470px;
+      background-color: $primary_color;
+      text-align: center;
+      h3 {
+        color: white;
+        text-transform: uppercase;
+        width: 100%;
+        margin: 10px 0;
+      }
+      span {
+        display: block;
+        color: grey;
+      }
+    }
   }
-.disk h3 {
-  color: white;
-  text-transform: uppercase;
-  width: 100%;
 }
-.disk span {
-  display: block;
-  color: grey;
-}
-// FINE MAIN
