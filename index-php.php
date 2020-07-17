@@ -1,8 +1,11 @@
+<?php
+  include __DIR__ . '/database.php';
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Ajax dischi</title>
+    <title>Ajax dischi php</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/app.css">
   </head>
@@ -19,24 +22,20 @@
     <main>
       <div class="container">
         <div class="music_container">
-
+          <?php foreach ($database as $disk) { ?>
+            <div class="disk">
+              <div class="disk-info">
+                <img src=" <?php echo $disk['poster'] ?> " alt="<?php echo $disk['title'] ?>">
+                <h3> <?php echo $disk['title'] ?> </h3>
+                <span> <?php echo $disk['author'] ?> </span>
+                <span> <?php echo $disk['year'] ?> </span>
+              </div>
+            </div>
+          <?php } ?>
         </div>
       </div>
     </main>
     <!-- Fine main -->
-
-    <!-- Template cd Handlebars -->
-    <script id="cd-template" type="text/x-handlebars-template">
-      <div class="disk">
-        <div class="disk-info">
-          <img src=" {{poster}} " alt="{{title}}">
-          <h3> {{title}} </h3>
-          <span> {{author}} </span>
-          <span> {{year}} </span>
-        </div>
-      </div>
-    </script>
-
     <!-- Script di JS con Laravel Mix -->
     <script type="text/javascript" src="dist/app.js"></script>
   </body>
