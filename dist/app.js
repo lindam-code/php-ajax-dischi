@@ -16092,22 +16092,19 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
 $(document).ready(function () {
-  // Chiamata Ajax per tutti i cd quando apro la pagina
-  $.ajax({
-    url: 'http://localhost:8888/php-ajax-dischi/server.php',
-    method: 'GET',
-    success: function success(dataResponse) {
-      printCd(dataResponse);
-    },
-    error: function error() {
-      alert('La chiamata api non risponde');
-    }
-  }); // Chiamata Ajax per scelta dell'autore da parte dell'utente
+  // Chiamata Ajax per popolare la select con gli autori dei cd del database
+  populateSelect(); // Chiamata Ajax per tutti i cd quando apro la pagina (select All)
+
+  getDisks('All'); // Chiamata Ajax per scelta dell'autore da parte dell'utente tramite select
 
   $('#author_select').change(function () {
     var userAuthor = $(this).val();
+    getDisks(userAuthor);
+  }); // Richiama i cd dal mio server
+
+  function getDisks(userAuthor) {
     $.ajax({
-      url: 'http://localhost:8888/php-ajax-dischi/server.php',
+      url: window.location.protocol + '//' + window.location.host + '/php-ajax-dischi/server.php',
       method: 'GET',
       data: {
         author: userAuthor
@@ -16119,7 +16116,11 @@ $(document).ready(function () {
         alert('La chiamata api non risponde');
       }
     });
-  }); // Stampo a schermo i cd
+  }
+
+  ; // Stampa a schermo i cd con Handlebars
+  // Accetta: database, che contiene un array di oggetti disco
+  // Return: niente, stampa solo
 
   function printCd(database) {
     // Preparo template Handlebars
@@ -16132,7 +16133,37 @@ $(document).ready(function () {
       var html = template(database[i]);
       $('.music_container').append(html);
     }
+  } // Chiamata API per popolare la select con Handlebars
+
+
+  function populateSelect() {
+    $.ajax({
+      url: window.location.protocol + '//' + window.location.host + '/php-ajax-dischi/server.php',
+      method: 'GET',
+      data: {
+        'author-list': true
+      },
+      success: function success(dataResponse) {
+        // Preparo template Handlebars
+        var source = $('#select-author-template').html();
+        var template = Handlebars.compile(source);
+
+        for (var i = 0; i < dataResponse.length; i++) {
+          thisAuthor = dataResponse[i];
+          var context = {
+            author: thisAuthor
+          };
+          var html = template(context);
+          $('#author_select').append(html);
+        }
+      },
+      error: function error() {
+        alert('La chiamata api non risponde');
+      }
+    });
   }
+
+  ;
 });
 
 /***/ }),
@@ -16155,8 +16186,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\felin\Desktop\Boolean\mamp-htdocs\php-ajax-dischi\src\js\app.js */"./src/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\felin\Desktop\Boolean\mamp-htdocs\php-ajax-dischi\src\scss\app.scss */"./src/scss/app.scss");
+__webpack_require__(/*! C:\Users\felin\desktop\Boolean\mamp-htdocs\php-ajax-dischi\src\js\app.js */"./src/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\felin\desktop\Boolean\mamp-htdocs\php-ajax-dischi\src\scss\app.scss */"./src/scss/app.scss");
 
 
 /***/ })
